@@ -1,6 +1,6 @@
 # Zettelkasten RAG (Retrieval Augmented Generation)
 
-Second Brain Google ADK agent that creates a RAG corpus of Zettelkasten cards from a source and then use RAG to query the cards.
+Second Brain agent using Google ADK that creates a RAG corpus of Zettelkasten cards from a source and then use RAG to query the cards.
 
 ## Motivation
 
@@ -281,6 +281,6 @@ your specific data sources and retrieval requirements.
 
 This agent is provided for illustrative purposes only and is not intended for production use. It serves as a basic example of an agent and a foundational starting point for individuals or teams to develop their own agents.
 
-This sample has not been rigorously tested, may contain bugs or limitations, and does not include features or optimizations typically required for a production environment (e.g., robust error handling, security measures, scalability, performance considerations, comprehensive logging, or advanced configuration options).
+This agent has not been rigorously tested, may contain bugs or limitations, and does not include features or optimizations typically required for a production environment (e.g., robust error handling, security measures, scalability, performance considerations, comprehensive logging, or advanced configuration options).
 
 Users are solely responsible for any further development, testing, security hardening, and deployment of agents based on this sample. We recommend thorough review, testing, and the implementation of appropriate safeguards before using any derived agent in a live or critical system.
