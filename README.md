@@ -1,6 +1,6 @@
 # Zettelkasten RAG (Retrieval Augmented Generation)
 
-Second Brain Agent using Google ADK.
+Second Brain Google ADK agent that creates a RAG corpus of Zettelkasten cards from a source and then use RAG to query the cards.
 
 ## Motivation
 
@@ -17,7 +17,7 @@ This agent uses the Google Agent Development Kit (google-adk) and is based on th
 
 This is a Second Brain agent designed to answer questions related to Zettelkasten cards uploaded to Vertex AI RAG Engine. It reads documents and extract key facts into Zettelkasten cards using an LLM and uploads these cards to the Vertex AI RAG Engine. It utilizes Retrieval-Augmented Generation (RAG) with the Vertex AI RAG Engine to fetch relevant cards, which are then synthesized by an LLM (Gemini) to provide informative answers with citations.
 
-The idea is that RAG tends to be inaccurate due to non optimal chunk size (what happens when the information is split across chunks and only one chunk is retrieved). This causes the RAG agent to give incorrect answers or hallucinate. The solution is take a first pass through the document and generate a set of Zettlekasten cards, each representing an atomic concept from the document. A RAG query is then used to retrieve cards, which should all be under the chunk size, and hopefully this will give a better more accurate model response to the query.
+The idea is that RAG tends to be inaccurate due to non optimal chunk size (what happens when the information is split across chunks and only one chunk is retrieved). This causes the RAG agent to give incorrect answers or hallucinate. The solution is take a first pass through the document and generate a set of Zettelkasten cards, each representing an atomic concept from the document. A RAG query is then used to retrieve cards, which should all be under the chunk size, and hopefully this will give a better more accurate model response to the query.
 
 ```mermaid
 graph
@@ -32,9 +32,9 @@ end
 RAG <--> Engine(Vertex AI Engine) <--> Corpus[(RAG Corpus)]
 ```
 
-Initially Documents are processed using an LLM (Gemini 2.5 Pro Preview 05-06) into Zettelkasten Cards, which are then loaded into the RAG Corpus.
+Initially Documents are processed using an LLM (Gemini Pro 2.5 Preview 05-06) into Zettelkasten Cards, which are then loaded into the RAG Corpus.
 
-The diagram then outlines the agent's workflow, designed to provide informed and context-aware responses. User queries are processed by agent development kit. The LLM (Google Flash 2.5 Preview 05-26) determines if external knowledge (RAG corpus) is required. If so, the `VertexAiRagRetrieval` tool fetches relevant information from the configured Vertex RAG Engine corpus. The LLM then synthesizes this retrieved information with its internal knowledge to generate an accurate answer, including citations pointing back to the source documentation URLs.
+The diagram then outlines the agent's workflow, designed to provide informed and context-aware responses. User queries are processed by agent development kit. The LLM (Google Flash 2.5 Preview 05-26) determines if external knowledge (RAG corpus) is required. If so, the `VertexAiRagRetrieval` tool fetches relevant information from the configured Vertex RAG Engine corpus. The LLM then synthesizes this retrieved information with its internal knowledge to generate an accurate answer, including citations pointing back to the Zettelkasten cards. A future enhancement could link the Zettelkasten cards back to the original source document for additional grounding.
 
 ## Agent Details
 | Attribute         | Details                                                                                                                                                                                             |
