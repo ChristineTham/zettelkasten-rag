@@ -87,7 +87,6 @@ Ask(ask_vertex_documentation) --> Retrieve[(retrieve_vertex_documentation)]
 
     This command reads the `pyproject.toml` file and installs all the necessary dependencies into a virtual environment managed by UV.
 
-    ```
 3.  **Set up Environment Variables:**
     Rename the file ".env.example" to ".env"
     Follow the steps in the file to set up the environment variables.
@@ -97,9 +96,9 @@ Ask(ask_vertex_documentation) --> Retrieve[(retrieve_vertex_documentation)]
 
     If you don't have a corpus setup yet, please follow "How to upload my file to my RAG corpus" section. The `create_second_brain.py` script will automatically create a corpus (if needed) and update the `RAG_CORPUS` variable in your `.env` file with the resource name of the created or retrieved corpus.
 
-#### How to upload my file to my RAG corpus
+#### How to upload a document to a RAG corpus
 
-The `rag/shared_libraries/create_second_brain.py` script helps you set up a RAG corpus and upload an initial document. By default, it downloads Alphabet's 2024 10-K PDF and uploads it to a new corpus.
+The `rag/shared_libraries/create_second_brain.py` script helps you set up a RAG corpus and extracts Zettelkasten cards from an initial document. By default, it downloads Alphabet's 2024 10-K PDF and upload Zettelkasten cards based on the document to a new corpus.
 
 1.  **Authenticate with your Google Cloud account:**
     ```bash
@@ -119,9 +118,9 @@ The `rag/shared_libraries/create_second_brain.py` script helps you set up a RAG 
         ```bash
         uv run rag/shared_libraries/create_second_brain.py
         ```
-        This will create a corpus named `Alphabet_10K_2024_corpus` (if it doesn't exist), download `goog-10-k-2024.pdf` from the URL specified in the script, and upload it to the corpus.
+        This will create a corpus named `Alphabet_10K_2024_corpus` (if it doesn't exist), download `goog-10-k-2024.pdf` from the URL specified in the script, convert it to Zettelkasten cards, and upload it to the corpus.
 
-    *   **To upload a different PDF from a URL:**
+    *   **To convert a different PDF from a URL:**
         a. Open the `rag/shared_libraries/create_second_brain.py` file.
         b. Modify the following variables at the top of the script:
            ```python
@@ -138,7 +137,7 @@ The `rag/shared_libraries/create_second_brain.py` script helps you set up a RAG 
            uv run rag/shared_libraries/create_second_brain.py
            ```
 
-    *   **To upload a local PDF file:**
+    *   **To convert a local PDF file:**
         a. Open the `rag/shared_libraries/create_second_brain.py` file.
         b. Modify the `CORPUS_DISPLAY_NAME` and `CORPUS_DESCRIPTION` variables as needed (see above).
         c. Modify the `main()` function at the bottom of the script to directly call `upload_zettelkasten_notes_to_corpus` with your local file details:
