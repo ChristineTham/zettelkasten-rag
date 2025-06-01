@@ -1,0 +1,29 @@
+[project]
+name = "zettelkasten-rag"
+version = "0.1.0"
+description = "Google ADK agent that creates a RAG corpus of Zettelkasten cards from a source and then use RAG to query the cards."
+authors = [{ name = "Christine Tham", email = "chris.tham@hellotham.com" }]
+
+license = "Apache License 2.0"
+readme = "README.md"
+requires-python = "<4.0,>=3.11"
+dependencies = [
+    "pydantic-settings<3.0.0,>=2.8.1",
+    "tabulate<1.0.0,>=0.9.0",
+    "google-auth<3.0.0,>=2.36.0",
+    "requests<3.0.0,>=2.32.3",
+    "google-adk<2.0.0,>=1.0.0",
+    "google-cloud-aiplatform[adk,agent-engines]<2.0.0,>=1.93.0",
+    "llama-index<1.0,>=0.12",
+    "pypdf2>=3.0.1",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.5",
+    "pytest-mock>=3.14.0",
+    "scikit-learn>=1.6.1",
+    "pytest-cov>=6.0.0",
+    "pytest-asyncio>=0.26.0",
+    "black>=25.1.0",
+]
