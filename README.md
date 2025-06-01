@@ -1,4 +1,6 @@
-# Zettelkasteg RAG (Documentation Retrieval Agent)
+# Zettelkasten RAG (Retrieval Augmented Generation)
+
+Second Brain Agent using Google ADK.
 
 ## Motivation
 
@@ -13,7 +15,7 @@ This agent uses the Google Agent Development Kit (google-adk) and is based on th
 
 ## Overview
 
-This agent is designed to answer questions related to documents you uploaded to Vertex AI RAG Engine. It converts documents into Zettelkasten cards and uploads these cards to the Vertex AI RAG Engine. It utilizes Retrieval-Augmented Generation (RAG) with the Vertex AI RAG Engine to fetch relevant cards, which are then synthesized by an LLM (Gemini) to provide informative answers with citations.
+This is a Second Brain agent designed to answer questions related to Zettelkasten cards uploaded to Vertex AI RAG Engine. It reads documents and extract key facts into Zettelkasten cards using an LLM and uploads these cards to the Vertex AI RAG Engine. It utilizes Retrieval-Augmented Generation (RAG) with the Vertex AI RAG Engine to fetch relevant cards, which are then synthesized by an LLM (Gemini) to provide informative answers with citations.
 
 The idea is that RAG tends to be inaccurate due to non optimal chunk size (what happens when the information is split across chunks and only one chunk is retrieved). This causes the RAG agent to give incorrect answers or hallucinate. The solution is take a first pass through the document and generate a set of Zettlekasten cards, each representing an atomic concept from the document. A RAG query is then used to retrieve cards, which should all be under the chunk size, and hopefully this will give a better more accurate model response to the query.
 
