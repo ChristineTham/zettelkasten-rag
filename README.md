@@ -15,17 +15,19 @@ This agent uses the Google Agent Development Kit (google-adk) and is based on th
 
 This agent is designed to answer questions related to documents you uploaded to Vertex AI RAG Engine. It converts documents into Zettelkasten cards and uploads these cards to the Vertex AI RAG Engine. It utilizes Retrieval-Augmented Generation (RAG) with the Vertex AI RAG Engine to fetch relevant cards, which are then synthesized by an LLM (Gemini) to provide informative answers with citations.
 
+The idea is that RAG tends to be inaccurate due to non optimal chunk size (what happens when the information is split across chunks and only one chunk is retrieved). This causes the RAG agent to give incorrect answers or hallucinate. The solution is take a first pass through the document and generate a set of Zettlekasten cards, each representing an atomic concept from the document. A RAG query is then used to retrieve cards, which should all be under the chunk size, and hopefully this will give a better more accurate model response to the query.
+
 ```mermaid
 graph
 Document --> Zettelkasten(Zettelkasten Extractor) --> Corpus
-User --> LLM
+User <--> LLM
 subgraph framework["Vertex Agent Framework"]
     LLM --> LResponse[LLM Response] --> RAG[RAG Tool] --> TResponse[Tool Response] --> LLM
 end
 subgraph Gemini[Vertex AI Gemini model]
     Zettelkasten
 end
-RAG --> Engine(Vertex AI Engine) --> Corpus[(RAG Corpus)]
+RAG <--> Engine(Vertex AI Engine) <--> Corpus[(RAG Corpus)]
 ```
 
 Initially Documents are processed using an LLM (Gemini 2.5 Pro Preview 05-06) into Zettelkasten Cards, which are then loaded into the RAG Corpus.
