@@ -94,7 +94,7 @@ Ask(ask_vertex_documentation) --> Retrieve[(retrieve_vertex_documentation)]
 4. **Setup Corpus:**
     If you have an existing corpus in Vertex AI RAG Engine, please set corpus information in your .env file. For example: RAG_CORPUS='projects/123/locations/us-central1/ragCorpora/456'.
 
-    If you don't have a corpus setup yet, please follow "How to upload my file to my RAG corpus" section. The `create_second_brain.py` script will automatically create a corpus (if needed) and update the `RAG_CORPUS` variable in your `.env` file with the resource name of the created or retrieved corpus.
+    If you don't have a corpus setup yet, please follow "How to upload a document to a RAG corpus" section. The `create_second_brain.py` script will automatically create a corpus (if needed) and update the `RAG_CORPUS` variable in your `.env` file with the resource name of the created or retrieved corpus.
 
 #### How to upload a document to a RAG corpus
 
@@ -113,7 +113,7 @@ The `rag/shared_libraries/create_second_brain.py` script helps you set up a RAG 
     ```
 
 3.  **Configure and run the preparation script:**
-    *   **To use the default behavior (upload Alphabet's 10K PDF):**
+    *   **To use the default behavior (create and upload Zettelkasten cards based on Alphabet's 10K PDF):**
         Simply run the script:
         ```bash
         uv run rag/shared_libraries/create_second_brain.py
@@ -191,7 +191,7 @@ from the root project directory:
 ### Example Interaction
 Here's a quick example of how a user might interact with the agent:
 
-**Example 1: Document Information Retrieval**
+**Example 1: Zettelkasten RAG**
 
 User: According to the MD&A, how might the increasing proportion of revenues derived from non-advertising sources like Google Cloud and devices potentially impact Alphabet's overall operating margin, and why?
 
