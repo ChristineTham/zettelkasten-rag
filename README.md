@@ -208,7 +208,7 @@ The Agent can be deployed to Vertex AI Agent Engine using the following
 commands:
 
 ```
-python deployment/deploy.py
+un run deployment/deploy.py
 ```
 
 After deploying the agent, you'll be able to read the following INFO log message:
